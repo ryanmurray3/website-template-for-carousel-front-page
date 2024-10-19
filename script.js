@@ -1,32 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const carouselImages = document.querySelectorAll('.carousel-images img');
-    const totalImages = carouselImages.length;
+    const carouselSlides = document.querySelectorAll('.carousel-images .carousel-slide');
+    const totalSlides = carouselSlides.length;
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     let currentIndex = 0;
+    let intervalId;
 
-    if (totalImages === 0) {
-        console.warn('No images found for the carousel.');
-        return; // Exit if no images are found
+    if (totalSlides === 0) {
+        console.warn('No slides found for the carousel.');
+        return; // Exit if no slides are found
     }
 
+    // CSS classes to show/hide slides
+    const ACTIVE_CLASS = 'active-slide';
+
+    // Show the current slide and hide the previous one
     function showImage(index) {
-        carouselImages.forEach((img, i) => {
-            img.classList.remove('active');
-            if (i === index) {
-                img.classList.add('active');
-            }
-        });
+        const previousSlide = carouselSlides[currentIndex];
+        const currentSlide = carouselSlides[index];
+        
+        if (previousSlide) previousSlide.classList.remove(ACTIVE_CLASS);
+        if (currentSlide) currentSlide.classList.add(ACTIVE_CLASS);
+        
+        currentIndex = index;
     }
 
     function nextImage() {
-        currentIndex = (currentIndex + 1) % totalImages;
-        showImage(currentIndex);
+        const newIndex = (currentIndex + 1) % totalSlides;
+        showImage(newIndex);
     }
 
     function prevImage() {
-        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-        showImage(currentIndex);
+        const newIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        showImage(newIndex);
     }
 
     if (nextBtn) {
@@ -41,13 +47,29 @@ document.addEventListener('DOMContentLoaded', () => {
         console.warn('Previous button not found.');
     }
 
-    // Auto rotate images every 3 seconds
-    const intervalId = setInterval(nextImage, 3000);
+    // Show the first image initially
+    showImage(currentIndex);
 
-    // Optionally, stop interval if visibility changes
+    // Auto rotate images every 3 seconds
+    function startCarousel() {
+        if (!intervalId) {
+            intervalId = setInterval(nextImage, 3000);
+        }
+    }
+
+    function stopCarousel() {
+        clearInterval(intervalId);
+        intervalId = null;
+    }
+
+    startCarousel();
+
+    // Pause and resume auto rotation based on visibility with debounce
     document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
-            clearInterval(intervalId); // Stop rotation when the page is not visible
+            stopCarousel();
+        } else {
+            startCarousel();
         }
     });
 });

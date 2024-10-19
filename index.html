@@ -1,25 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Image Carousel</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-</head>
-<body>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-content">
+        <!-- <div class="logo">
+                <video autoplay loop muted playsinline width="100" height="auto">
+                    <source src="images/Hollywood Digital Film Lab.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div> -->
+
+        <div class="logo">
+          <img
+            class="image-size"
+            src="images/barbie_logo-transformed.png"
+            alt="Website Logo"
+          />
+        </div>
+        <nav class="nav-links">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Dailies</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+        <!-- <div class="site-name">
+                <h1>Website Name Here</h1>
+            </div> -->
+      </div>
+    </header>
+
     <div class="carousel">
-        <div class="carousel-images">
-            <img src="images/policeOfficer.jpeg" alt="Image 1">
-            <img src="images/wedding1.jpeg" alt="Image 2">
-            <img src="images/wedding2.jpeg" alt="Image 3">
-            <img src="images/wedding3.jpeg" alt="Image 4">
+      <div class="carousel-images">
+        <div class="carousel-slide">
+          <img src="images/Her_image.jpeg" alt="Image 1" />
+          <div class="text-overlay">
+            <h2>Image Title Here 1</h2>
+            <p>Image description here</p>
+          </div>
         </div>
-        <div class="carousel-buttons">
-            <button class="carousel-button" id="prevBtn">&#8249;</button>
-            <button class="carousel-button" id="nextBtn">&#8250;</button>
+        <div class="carousel-slide">
+          <img src="images/Joker2 movie.jpeg" alt="Image 2" />
+          <div class="text-overlay">
+            <h2>Image Title Here 2</h2>
+            <p>Image description here</p>
+          </div>
         </div>
+        <div class="carousel-slide">
+          <img src="images/matrix image.jpg" alt="Image 3" />
+          <div class="text-overlay">
+            <h2>Image Title Here 3</h2>
+            <p>Image description here</p>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <img src="images/American Beauty image.jpeg" alt="Image 4" />
+          <div class="text-overlay">
+            <h2>Image Title Here 4</h2>
+            <p>Image description here</p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-buttons">
+        <button class="carousel-button" id="prevBtn">&#8249;</button>
+        <button class="carousel-button" id="nextBtn">&#8250;</button>
+      </div>
     </div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
