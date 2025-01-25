@@ -1,3 +1,10 @@
+@font-face {
+  font-family: myFirstFont;
+  src: url(sansation_bold.woff);
+  font-weight: bold;
+}
+
+
 * {
   box-sizing: border-box;
 }
@@ -28,16 +35,28 @@ body {
   justify-content: space-between;
 }
 
+.head-container {
+  display: flex;
+  justify-content: left;
+  flex-direction: column;
+}
+
 .logo {
+  z-index: 5;
   position: absolute;
-  left: 50%;
+  left: 5%;
   transform: translateX(-50%);
-  padding-top: 100px;
+  padding-top: 3px;
 }
 
 img.image-size {
-  width: 300px;
+  margin-bottom: 50px;
+  width: 130px;
   height: auto;
+}
+
+ul {
+  margin: auto;
 }
 
 .nav-links {
@@ -48,9 +67,9 @@ img.image-size {
   list-style: none;
   display: flex;
   gap: 20px;
-  margin: 0;
+  margin: auto 0;
   padding: 0;
-  justify-content: space-between;
+  justify-content: space-evenly;
   width: 100%;
 }
 
@@ -58,7 +77,9 @@ img.image-size {
   text-decoration: none;
   color: white;
   font-weight: bold;
+  font-size: 24px;
   transition: color 0.3s ease;
+  font-stretch: extra-expanded;
 }
 
 .nav-links a:hover {
